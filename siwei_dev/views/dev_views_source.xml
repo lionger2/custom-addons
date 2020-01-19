@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+  
+  <!-- Add action entry in the Action Menu for Partners -->
+    <act_window id="res_partner_act_window_sms_composer_multi"
+        name="Send SMS Text Message"
+        binding_model="res.partner"
+        res_model="sms.composer"
+        binding_views="list"
+        view_mode="form"
+        target="new"
+        context="{
+            'default_composition_mode': 'mass',
+            'default_mass_keep_log': True,
+            'default_res_ids': active_ids
+        }"
+    />
+  
+  the form view of contact
+  
+  the top relative list
+  <div class="oe_button_box" name="button_box"/>
+  
+  the image of the contact
+  <field name="image_1920" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image_128&quot;}"/>
+  				
+  				the alert message
+				<div class="alert alert-warning oe_edit_only" role="alert" attrs="{'invisible': [('same_vat_partner_id', '=', False)]}">
+                  A partner with the same <span><span class="o_vat_label">Tax ID</span></span> already exists (<field name="same_vat_partner_id"/>), are you sure to create a new one?
+                </div>
+                
+  <field name="active" invisible="1"/>
+                        <field name="company_type" widget="radio" class="oe_edit_only" options="{'horizontal': true}"/>              
+ <field name="name" default_focus="1" placeholder="Name" attrs="{'required' : [('type', '=', 'contact')]}"/>
+ 
+ 
+ 
+ 
+  </data>
+</odoo>

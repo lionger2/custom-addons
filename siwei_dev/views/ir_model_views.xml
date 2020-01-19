@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    
+    <record id="ir_model_form_view" model="ir.ui.view">
+        <field name="model">ir.model</field>
+        <field name="inherit_id" ref="base.view_model_form"/>
+        <field name="arch" type="xml">
+            <field name="modules" position="after">
+                <field name="def_module"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="ir_model_tree_view" model="ir.ui.view">
+        <field name="model">ir.model</field>
+        <field name="inherit_id" ref="base.view_model_tree"/>
+        <field name="arch" type="xml">
+            <field name="transient" position="after">
+                <field name="def_module"/>
+            </field>
+        </field>
+    </record>
+    <record id="ir_model_search_view" model="ir.ui.view">
+        <field name="model">ir.model</field>
+        <field name="inherit_id" ref="base.view_model_search"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field string="模块" name="def_module" filter_domain="[('def_module.name', 'ilike', self)]"/>
+            </field>
+        </field>
+    </record>
+
+
+</odoo>

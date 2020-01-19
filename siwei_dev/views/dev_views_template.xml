@@ -1,0 +1,71 @@
+		replace model_id: anodoo.customer.user.operation
+		replace: anodoo_customer_user_operation
+		modify: 用户操作
+		
+		<!-- 用户操作 model_id: anodoo.customer.user.operation-->
+	    <record id="view_anodoo_customer_user_operation_form" model="ir.ui.view">
+	        <field name="name">anodoo.customer.user.operation.view.form</field>
+	        <field name="model">anodoo.customer.user.operation</field>
+	        <field name="arch" type="xml">
+	            <form string="anodoo_customer_user_operation">
+	                <sheet>
+		                <group name="group_top">
+			                 <group name="group_left">
+			                     <field name="code" />
+			                     <field name="name" />
+			                     <field name="sequence" />
+			                 </group>
+			                 <group name="group_right">
+			                     <field name="type" />
+			                     <field name="online" />
+			                     <field name="description" />
+			                 </group>
+			             </group>
+	                </sheet>
+	            </form>            
+	        </field>
+	    </record>
+	    <record id="view_anodoo_customer_user_operation_tree" model="ir.ui.view">
+	        <field name="name">anodoo.customer.user.operation.view.tree</field>
+	        <field name="model">anodoo.customer.user.operation</field>
+	        <field name="arch" type="xml">
+	            <tree>
+	                <field name="code" />
+	                <field name="name" />
+	                <field name="type" />
+	                <field name="online" />
+	                <field name="sequence" />
+	                <field name="description" />                
+	            </tree>
+	        </field>
+	    </record>
+	    <record id="view_anodoo_customer_user_operation_search" model="ir.ui.view">
+	        <field name="name">anodoo.customer.user.operation.view.search</field>
+	        <field name="model">anodoo.customer.user.operation</field>
+	        <field name="arch" type="xml">
+	            <search>
+	            	<field name="name" filter_domain="[('name', 'ilike', self)]" />
+		            <separator/>
+		            <filter name="is_active_true"  string="启用" domain="[('is_active','=',True)]" /> 
+		            <filter name="is_active_false"  string="未启用" domain="[('is_active','=',False)]" />               	
+		           	<group expand="1" string="Group By">
+		           		<filter name="groupby_active"  string="状态" context="{'group_by':'is_active'}" />               	
+		           	</group>         	
+	            </search>
+	        </field>
+	    </record>
+	    
+    <!-- 动作 anodoo.customer.user.operation-->
+	<record id="action_anodoo_customer_user_operation_list" model="ir.actions.act_window">
+        <field name="name">用户操作</field>
+        <field name="res_model">anodoo.customer.user.operation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+	    
+	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_anodoo_customer_user_operation" name="用户操作" action="action_anodoo_customer_user_operation_list"/>
+	    
+	    access_anodoo_customer_user_operation_user,anodoo.customer.user.operation.user,model_anodoo_customer_user_operation,anodoo_base.anodoo_group_user,1,1,1,1
+	    
+	    
+	    

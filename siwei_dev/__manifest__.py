@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "siwei_website",
+    'name': "siwei_dev",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        """,
 
     'description': """
         Long description of module's purpose
@@ -20,14 +19,14 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['anodoo_engage_website'],
+    'depends': ['anodoo_demo'],
 
     # always loaded
     'data': [
-        'data/data.xml',
         # 'security/ir.model.access.csv',
-        'views/siwei_website_menu.xml',
-        'views/siwei_website_views.xml',
+        'views/ir_model_views.xml',
+        'views/siwei_dev_menu.xml',
+        'views/siwei_dev_views.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
