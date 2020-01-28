@@ -1,13 +1,14 @@
-		replace model_id: anodoo.customer.user.operation
-		replace: anodoo_customer_user_operation
-		modify: 用户操作
+		replace model_id: anodoo.team
+		replace: anodoo_team
+		modify: 团队
 		
-		<!-- 用户操作 model_id: anodoo.customer.user.operation-->
-	    <record id="view_anodoo_customer_user_operation_form" model="ir.ui.view">
-	        <field name="name">anodoo.customer.user.operation.view.form</field>
-	        <field name="model">anodoo.customer.user.operation</field>
+		<!-- 团队 model_id: anodoo.team-->
+	    <record id="view_anodoo_team_form" model="ir.ui.view">
+	        <field name="name">anodoo.team.view.form</field>
+	        <field name="model">anodoo.team</field>
+	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
-	            <form string="anodoo_customer_user_operation">
+	            <form string="anodoo_team">
 	                <sheet>
 		                <group name="group_top">
 			                 <group name="group_left">
@@ -25,9 +26,10 @@
 	            </form>            
 	        </field>
 	    </record>
-	    <record id="view_anodoo_customer_user_operation_tree" model="ir.ui.view">
-	        <field name="name">anodoo.customer.user.operation.view.tree</field>
-	        <field name="model">anodoo.customer.user.operation</field>
+	    <record id="view_anodoo_team_list" model="ir.ui.view">
+	        <field name="name">anodoo.team.view.list</field>
+	        <field name="model">anodoo.team</field>
+	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
 	            <tree>
 	                <field name="code" />
@@ -39,9 +41,10 @@
 	            </tree>
 	        </field>
 	    </record>
-	    <record id="view_anodoo_customer_user_operation_search" model="ir.ui.view">
-	        <field name="name">anodoo.customer.user.operation.view.search</field>
-	        <field name="model">anodoo.customer.user.operation</field>
+	    <record id="view_anodoo_team_search" model="ir.ui.view">
+	        <field name="name">anodoo.team.view.search</field>
+	        <field name="model">anodoo.team</field>
+	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
 	            <search>
 	            	<field name="name" filter_domain="[('name', 'ilike', self)]" />
@@ -55,17 +58,17 @@
 	        </field>
 	    </record>
 	    
-    <!-- 动作 anodoo.customer.user.operation-->
-	<record id="action_anodoo_customer_user_operation_list" model="ir.actions.act_window">
-        <field name="name">用户操作</field>
-        <field name="res_model">anodoo.customer.user.operation</field>
+    <!-- 动作 anodoo.team-->
+	<record id="action_anodoo_team_list" model="ir.actions.act_window">
+        <field name="name">团队</field>
+        <field name="res_model">anodoo.team</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
     </record>
 	    
-	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_anodoo_customer_user_operation" name="用户操作" action="action_anodoo_customer_user_operation_list"/>
+	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_anodoo_team" name="团队" action="action_anodoo_team_list"/>
 	    
-	    access_anodoo_customer_user_operation_user,anodoo.customer.user.operation.user,model_anodoo_customer_user_operation,anodoo_base.anodoo_group_user,1,1,1,1
+	    access_anodoo_team_user,anodoo.team.user,model_anodoo_team,anodoo_base.anodoo_group_user,1,1,1,1
 	    
 	    
 	    

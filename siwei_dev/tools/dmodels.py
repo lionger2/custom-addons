@@ -90,6 +90,8 @@ related (str) – 字段名的序列
     selection (list(tuple(str,str)) 或 callable 或 str) – 指定这个字段可能的值。它要么给定一个 (value, label)对的列表，要么是一个模型方式或方法名。属性selection 在related 或扩展字段以外的情况下是都是必须的。
     selection_add (list(tuple(str,str))) –在重载字段的情况下提供对选项的一个扩展。是一个 (value, label) 对的列表或单值元组 (value,)，其中的值必须要出现在重载选项中。
     '''
+    type = fields.Selection([('customer', '面向客户'), ('product', '面向产品')], required=True,
+        string='', default='customer', help="")
     type = fields.Selection([('lead', 'Lead'), ('opportunity', 'Opportunity')], index=True, required=True, tracking=15,
         default=lambda self: 'lead' if self.env['res.users'].has_group('crm.group_use_lead') else 'opportunity',
         help="Type is used to separate Leads and Opportunities")
@@ -99,7 +101,7 @@ related (str) – 字段名的序列
     comodel_name (str) – 目标模型Mandatory 除关联或扩展字段以外的名称。
     domain – 在客户端（域或字符串）设置备用值的可选域
     context (dict) – 在处理该字段时用于客户端的可选上下文
-    ondelete (str) – 在引用的记录被删除时所做的操作：可用的值下有： 'set null', 'restrict', 'cascade'
+    ondelete (str) – 在引用的记录被删除时所做的操作：可用的值下有： 'set null'(默认）, 'restrict', 'cascade'
     auto_join (bool) – 对该字段的搜索是否有JOIN生成 (默认值：False)
     delegate (bool) – 设置为True 来让你目标模型的字段可通过当前模型进行访问(对应 _inherits)
     check_company – 添加默认作用域['|', ('company_id', '=', False), ('company_id', '=', company_id)]。 标记该字段在 _check_company中进行验证。

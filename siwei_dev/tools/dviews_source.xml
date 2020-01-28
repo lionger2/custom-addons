@@ -1,24 +1,15 @@
 <odoo>
   <data>
+看板参考 cust_views.xml anodoo.customer.kanban
+contact_views.xml anodoo.contact.kanban
+
+<kanban class="o_res_partner_kanban" archivable="false" create="false" edite="false" delete="false">
   
-  <!-- Add action entry in the Action Menu for Partners -->
-    <act_window id="res_partner_act_window_sms_composer_multi"
-        name="Send SMS Text Message"
-        binding_model="res.partner"
-        res_model="sms.composer"
-        binding_views="list"
-        view_mode="form"
-        target="new"
-        context="{
-            'default_composition_mode': 'mass',
-            'default_mass_keep_log': True,
-            'default_res_ids': active_ids
-        }"
-    />
+<page name='prospect' string="潜在客户" attrs="{'invisible': [('is_prospect', '=', False)]}">
+                            
+                        </page>
   
-  the form view of contact
-  
-  the top relative list
+  顶部相关
   <div class="oe_button_box" name="button_box"/>
   
   the image of the contact
@@ -30,7 +21,7 @@
                 </div>
                 
   <field name="active" invisible="1"/>
-                        <field name="company_type" widget="radio" class="oe_edit_only" options="{'horizontal': true}"/>              
+<field name="company_type" widget="radio" class="oe_edit_only" options="{'horizontal': true}"/>              
  <field name="name" default_focus="1" placeholder="Name" attrs="{'required' : [('type', '=', 'contact')]}"/>
  
  
