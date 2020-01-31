@@ -15,8 +15,6 @@ class Customer(models.Model):
 	_rec_name = 'name'
     _order = 'id'
 	
-	#extend anodoo_base.Partner
-    _inherit = 'res.partner'
     
     name = fields.Char('名称', required=True, translate=True)
     
@@ -25,6 +23,8 @@ class Customer(models.Model):
     description = fields.Text('描述', translate=False)
     
     #其他常用字段
+    active = fields.Boolean('激活', default=True, tracking=True)
+    
     customer_identity = fields.Char('唯一标识信息', help='客户唯一标识信息')
     
     is_default = fields.Boolean('是否默认', default=False)
