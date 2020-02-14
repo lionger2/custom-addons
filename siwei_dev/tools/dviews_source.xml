@@ -24,8 +24,18 @@ contact_views.xml anodoo.contact.kanban
 <field name="company_type" widget="radio" class="oe_edit_only" options="{'horizontal': true}"/>              
  <field name="name" default_focus="1" placeholder="Name" attrs="{'required' : [('type', '=', 'contact')]}"/>
  
+<field name="inherit_id" ref="crm.crm_lead_view_form"/> 
  
+ <filter string="已归档" name="inactive" domain="[('active', '=', False)]"/>
  
- 
+ <xpath expr="//div[hasclass('oe_title')]" position="inside">
+                    <field name="product_template_attribute_value_ids" widget="many2many_tags" readonly="1"
+                        groups="product.group_product_variant"/>
+                </xpath>
+                
+                <xpath expr="//field[@name='stage_id']" position="attributes">
+	        		<attribute name="attrs">{'invisible': ['|', ('active', '=', False)]}</attribute>
+	        		<attribute name="domain">['|', ('team_id', '=', team_id), ('team_id', '=', False), ('lifetime_id','=',lifetime_id)]</attribute>
+	        	</xpath>
   </data>
 </odoo>

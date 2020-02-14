@@ -31,5 +31,16 @@
         </field>
     </record>
 
-
+	<!-- 
+	<record id="edit_menu_access_search" model="ir.ui.view">
+            <field name="name">ir.ui.menu.search</field>
+            <field name="model">ir.ui.menu</field>
+            <field name="inherit_id" ref="base.edit_menu_access_search"/>
+            <field name="arch" type="xml">
+            	<field name="parent_id" position="after">
+	                <field string="模块" name="def_module" filter_domain="[('def_module.name', 'ilike', self)]"/>
+	            </field>
+            </field>
+        </record>
+        -->
 </odoo>

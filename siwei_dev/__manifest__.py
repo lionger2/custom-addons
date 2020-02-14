@@ -24,7 +24,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/ir_model_views.xml',
+        'views/base_views.xml',
         'views/siwei_dev_menu.xml',
         'views/siwei_dev_views.xml',
         'views/templates.xml',

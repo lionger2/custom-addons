@@ -1,5 +1,9 @@
 from odoo import models, fields, api
 
+from odoo.addons.crm.models import crm_stage
+from anodoo_lead.models import crm_stage
+from . import crm_stage
+
 树状对象  class CustomerLabelCategory in customer_segment
 阶段对象  class CustomerLifetimeStage in customer_lifetime
 属性对象 CustomerType,  标签对象CustomerLabel, 日志对象CustomerAllot
@@ -16,14 +20,14 @@ class Customer(models.Model):
     _order = 'id'
 	
     
-    name = fields.Char('名称', required=True, translate=True)
+    name = fields.Char('名称', required=True)
     
-    sequence = fields.Integer('序号', default=10, help="序号")
+    sequence = fields.Integer('序号', default=10)
     
-    description = fields.Text('描述', translate=False)
+    description = fields.Text('描述')
     
     #其他常用字段
-    active = fields.Boolean('激活', default=True, tracking=True)
+    active = fields.Boolean('激活', default=True)
     
     customer_identity = fields.Char('唯一标识信息', help='客户唯一标识信息')
     
@@ -40,6 +44,8 @@ class Customer(models.Model):
                            
    	customer_priority = fields.Selection([('0', 'Low'),  ('1', 'Medium'),  ('2', 'High'), ('3', 'Very High')], 
    	string='优先级', index=True, default='0')
+       
+    resume_line_ids = fields.One2many(related='employee_id.resume_line_ids', readonly=False)
        
     @api.model
     def default_get(self, fields):
@@ -77,9 +83,31 @@ class Customer(models.Model):
         self._validate_cashbox()
         return res
     
+    @api.depends('attribute_line_ids.active', 'attribute_line_ids.product_tmpl_id')
+    def _compute_products(self):
+        for pa in self:
+            pa.product_tmpl_ids = pa.attribute_line_ids.product_tmpl_id
+    
     
     _cr = property(lambda self: self.env.cr)
     _uid = property(lambda self: self.env.uid)
     _context = property(lambda self: self.env.context)
 self.env['account.journal'].browse
+
+program = self.env['sale.coupon.program'].browse(self.env.context.get('active_id'))
+
+        vals = {'program_id': program.id}
+
+for count in range(0, self.nbr_coupons):
+
+for partner in self.env['res.partner'].search(safe_eval(self.partners_domain)):
+	vals.update({'partner_id': partner.id})
+
+subject = '%s, a coupon has been generated for you' % (partner.name)
+
+template = self.env.ref('sale_coupon.mail_template_sale_coupon', raise_if_not_found=False)
+
+template.send_mail(coupon.id, email_values={'email_to': partner.email, 'email_from': self.env.user.email or '', 'subject': subject,})
+
+getattr(self, field)
      

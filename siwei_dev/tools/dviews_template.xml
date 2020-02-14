@@ -1,14 +1,14 @@
-		replace model_id: anodoo.sale.goal.breakdown.dimension.relation
-		replace: anodoo_sale_goal_breakdown_dimension_relation
-		modify: 目标分解
+		replace model_id: anodoo.team.member
+		replace: anodoo_team_member
+		modify: 商机报备
 		
-		<!-- 目标分解 model_id: anodoo.sale.goal.breakdown.dimension.relation-->
-	    <record id="view_anodoo_sale_goal_breakdown_dimension_relation_form" model="ir.ui.view">
-	        <field name="name">anodoo.sale.goal.breakdown.dimension.relation.view.form</field>
-	        <field name="model">anodoo.sale.goal.breakdown.dimension.relation</field>
+		<!-- 商机报备 model_id: anodoo.team.member-->
+	    <record id="view_anodoo_team_member_form" model="ir.ui.view">
+	        <field name="name">anodoo.team.member.view.form</field>
+	        <field name="model">anodoo.team.member</field>
 	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
-	            <form string="anodoo_sale_goal_breakdown_dimension_relation">
+	            <form string="anodoo_team_member">
 	                <sheet>
 		                <group name="group_top">
 			                 <group name="group_left">
@@ -37,9 +37,9 @@
 	            </form>            
 	        </field>
 	    </record>
-	    <record id="view_anodoo_sale_goal_breakdown_dimension_relation_list" model="ir.ui.view">
-	        <field name="name">anodoo.sale.goal.breakdown.dimension.relation.view.list</field>
-	        <field name="model">anodoo.sale.goal.breakdown.dimension.relation</field>
+	    <record id="view_anodoo_team_member_list" model="ir.ui.view">
+	        <field name="name">anodoo.team.member.view.list</field>
+	        <field name="model">anodoo.team.member</field>
 	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
 	            <tree>
@@ -52,9 +52,9 @@
 	            </tree>
 	        </field>
 	    </record>
-	    <record id="view_anodoo_sale_goal_breakdown_dimension_relation_search" model="ir.ui.view">
-	        <field name="name">anodoo.sale.goal.breakdown.dimension.relation.view.search</field>
-	        <field name="model">anodoo.sale.goal.breakdown.dimension.relation</field>
+	    <record id="view_anodoo_team_member_search" model="ir.ui.view">
+	        <field name="name">anodoo.team.member.view.search</field>
+	        <field name="model">anodoo.team.member</field>
 	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
 	            <search>
@@ -69,17 +69,17 @@
 	        </field>
 	    </record>
 	    
-    <!-- 动作 anodoo.sale.goal.breakdown.dimension.relation-->
-	<record id="action_anodoo_sale_goal_breakdown_dimension_relation_list" model="ir.actions.act_window">
-        <field name="name">目标分解</field>
-        <field name="res_model">anodoo.sale.goal.breakdown.dimension.relation</field>
+    <!-- 动作 anodoo.team.member-->
+	<record id="action_anodoo_team_member_list" model="ir.actions.act_window">
+        <field name="name">商机报备</field>
+        <field name="res_model">anodoo.team.member</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
     </record>
 	    
-	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_anodoo_sale_goal_breakdown_dimension_relation" name="目标分解" action="action_anodoo_sale_goal_breakdown_dimension_relation_list"/>
+	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_anodoo_team_member" name="商机报备" action="action_anodoo_team_member_list"/>
 	    
-	    access_anodoo_sale_goal_breakdown_dimension_relation_user,anodoo.sale.goal.breakdown.dimension.relation.user,model_anodoo_sale_goal_breakdown_dimension_relation,anodoo_base.anodoo_group_user,1,1,1,1
+	    access_anodoo_team_member_user,anodoo.team.member.user,model_anodoo_team_member,anodoo_base.anodoo_group_user,1,1,1,1
 	    
 	    
 	    
