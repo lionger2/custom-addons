@@ -1,14 +1,17 @@
-		replace model_id: anodoo.team.member
-		replace: anodoo_team_member
-		modify: 商机报备
+		replace model_id: anodoo.login.record
+		replace: anodoo_login_record
+		modify: 用户登陆记录
 		
-		<!-- 商机报备 model_id: anodoo.team.member-->
-	    <record id="view_anodoo_team_member_form" model="ir.ui.view">
-	        <field name="name">anodoo.team.member.view.form</field>
-	        <field name="model">anodoo.team.member</field>
+		
+		access_anodoo_login_record_user,anodoo.login.record.user,model_anodoo_login_record,anodoo_base.anodoo_group_user,1,1,1,1
+		
+		<!-- 用户登陆记录 model_id: anodoo.login.record-->
+	    <record id="view_anodoo_login_record_form" model="ir.ui.view">
+	        <field name="name">anodoo.login.record.view.form</field>
+	        <field name="model">anodoo.login.record</field>
 	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
-	            <form string="anodoo_team_member">
+	            <form string="anodoo_login_record">
 	                <sheet>
 		                <group name="group_top">
 			                 <group name="group_left">
@@ -37,9 +40,9 @@
 	            </form>            
 	        </field>
 	    </record>
-	    <record id="view_anodoo_team_member_list" model="ir.ui.view">
-	        <field name="name">anodoo.team.member.view.list</field>
-	        <field name="model">anodoo.team.member</field>
+	    <record id="view_anodoo_login_record_list" model="ir.ui.view">
+	        <field name="name">anodoo.login.record.view.list</field>
+	        <field name="model">anodoo.login.record</field>
 	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
 	            <tree>
@@ -52,9 +55,9 @@
 	            </tree>
 	        </field>
 	    </record>
-	    <record id="view_anodoo_team_member_search" model="ir.ui.view">
-	        <field name="name">anodoo.team.member.view.search</field>
-	        <field name="model">anodoo.team.member</field>
+	    <record id="view_anodoo_login_record_search" model="ir.ui.view">
+	        <field name="name">anodoo.login.record.view.search</field>
+	        <field name="model">anodoo.login.record</field>
 	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
 	            <search>
@@ -69,17 +72,17 @@
 	        </field>
 	    </record>
 	    
-    <!-- 动作 anodoo.team.member-->
-	<record id="action_anodoo_team_member_list" model="ir.actions.act_window">
-        <field name="name">商机报备</field>
-        <field name="res_model">anodoo.team.member</field>
-        <field name="view_mode">tree,form</field>
-        <field name="context">{}</field>
-    </record>
+	    <!-- 动作 anodoo.login.record-->
+		<record id="action_anodoo_login_record_list" model="ir.actions.act_window">
+	        <field name="name">用户登陆记录</field>
+	        <field name="res_model">anodoo.login.record</field>
+	        <field name="view_mode">tree,form</field>
+	        <field name="context">{}</field>
+	    </record>
 	    
-	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_anodoo_team_member" name="商机报备" action="action_anodoo_team_member_list"/>
+	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_anodoo_login_record" name="用户登陆记录" action="action_anodoo_login_record_list"/>
 	    
-	    access_anodoo_team_member_user,anodoo.team.member.user,model_anodoo_team_member,anodoo_base.anodoo_group_user,1,1,1,1
+	    
 	    
 	    
 	    

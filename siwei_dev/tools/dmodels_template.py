@@ -110,4 +110,7 @@ template = self.env.ref('sale_coupon.mail_template_sale_coupon', raise_if_not_fo
 template.send_mail(coupon.id, email_values={'email_to': partner.email, 'email_from': self.env.user.email or '', 'subject': subject,})
 
 getattr(self, field)
+
+
+
      

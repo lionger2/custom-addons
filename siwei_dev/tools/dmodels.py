@@ -133,7 +133,14 @@ related (str) – 字段名的序列
     write_date = fields.Datetime(string='Last Updated on')
     display_name = fields.Char(string='Display Name') #_compute_display_name
     
+
+get_param = request.env['ir.config_parameter'].sudo().get_param
+get_param('auth_signup.reset_password')
     
+
+action = self.env.ref('base.action_res_users').read()[0]
+
+raise NotImplementedError("")
     
     
     
