@@ -1,13 +1,15 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  	<!-- 在保留菜单下增加开发常用菜单 -->
-  	<menuitem parent="anodoo_base.odoo_history_menu" id="siwei_dev_menu_root" name="开发菜单" sequence="0"/>
-  		<menuitem parent="siwei_dev_menu_root" id="siwei_dev_apps" name="Apps" action="base.open_module_tree"/>
-	    <menuitem parent="siwei_dev_menu_root" id="siwei_dev_actions" name="Actions" action="base.ir_sequence_actions"/>
-	    <menuitem parent="siwei_dev_menu_root" id="siwei_dev_menus" name="Menus" action="base.grant_menu_access"/>
-	    <menuitem parent="siwei_dev_menu_root" id="siwei_dev_views" name="Views" action="base.action_ui_view"/>
-	    <menuitem parent="siwei_dev_menu_root" id="siwei_dev_models" name="Models" action="base.action_model_model"/>
-	    <menuitem parent="siwei_dev_menu_root" id="siwei_dev_fields" name="Fields" action="base.action_model_fields"/>
-	    <menuitem parent="siwei_dev_menu_root" id="siwei_dev_ids" name="Ids" action="base.action_model_data"/>
-	    
+    <data noupdate="0">
+		<!-- 设置中增加开发菜单 -->
+	  	<menuitem parent="base.menu_administration" id="dev_menu_root_anodoo" name="开发" />
+		  	<menuitem parent="dev_menu_root_anodoo" id="siwei_dev_menu_root_anodoo" name="开发菜单" sequence="0"/>
+		  		<menuitem parent="siwei_dev_menu_root_anodoo" id="siwei_dev_apps" name="Apps" action="base.open_module_tree"/>
+			    <menuitem parent="siwei_dev_menu_root_anodoo" id="siwei_dev_actions" name="Actions" action="base.ir_sequence_actions"/>
+			    <menuitem parent="siwei_dev_menu_root_anodoo" id="siwei_dev_menus" name="Menus" action="base.grant_menu_access"/>
+			    <menuitem parent="siwei_dev_menu_root_anodoo" id="siwei_dev_views" name="Views" action="base.action_ui_view"/>
+			    <menuitem parent="siwei_dev_menu_root_anodoo" id="siwei_dev_models" name="Models" action="base.action_model_model"/>
+			    <menuitem parent="siwei_dev_menu_root_anodoo" id="siwei_dev_fields" name="Fields" action="base.action_model_fields"/>
+			    <menuitem parent="siwei_dev_menu_root_anodoo" id="siwei_dev_ids" name="Ids" action="base.action_model_data"/>
+	</data>		    
 </odoo>

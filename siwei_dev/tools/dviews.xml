@@ -1,0 +1,158 @@
+		replace model_id: anodoo.customer.application
+		replace: anodoo_customer_application
+		modify: 客户应用
+		
+		
+		access_anodoo_customer_application_user,anodoo.customer.application.user,model_anodoo_customer_application,anodoo_base.group_anodoo_user,1,1,1,1
+
+		<!-- 客户应用 model_id: anodoo.customer.application-->
+	    <record id="view_anodoo_customer_application_form" model="ir.ui.view">
+	        <field name="name">anodoo.customer.application.view.form</field>
+	        <field name="model">anodoo.customer.application</field>
+	        <field name="priority">100</field>
+	        <field name="arch" type="xml">
+	            <form string="anodoo_customer_application">
+	                <sheet>
+		                <group name="group_top">
+			                 <group name="group_left">
+			                     <field name="code" />
+			                     <field name="name" />
+			                     <field name="sequence" />
+			                 </group>
+			                 <group name="group_right">
+			                     <field name="type" />
+			                     <field name="online" />
+			                     <field name="description" />
+			                 </group>
+			             </group>
+			             <notebook colspan="4">
+							<page name="location" string="位置信息" autofocus="autofocus">
+							    <field name="location_ids" context="{'territory_id': id}">
+			                     	<tree editable='bottom'>
+						                <field name="country_id" />
+						                <field name="state_id" />
+						                <field name="city_id" />            
+						            </tree>
+			                     </field>
+							</page>
+						</notebook>
+	                </sheet>
+	            </form>            
+	        </field>
+	    </record>
+	    <record id="view_anodoo_customer_application_list" model="ir.ui.view">
+	        <field name="name">anodoo.customer.application.view.list</field>
+	        <field name="model">anodoo.customer.application</field>
+	        <field name="priority">100</field>
+	        <field name="arch" type="xml">
+	            <tree>
+	                <field name="code" />
+	                <field name="name" />
+	                <field name="type" />
+	                <field name="online" />
+	                <field name="sequence" />
+	                <field name="description" />                
+	            </tree>
+	        </field>
+	    </record>
+	    <record id="view_anodoo_customer_application_search" model="ir.ui.view">
+	        <field name="name">anodoo.customer.application.view.search</field>
+	        <field name="model">anodoo.customer.application</field>
+	        <field name="priority">100</field>
+	        <field name="arch" type="xml">
+	            <search>
+	            	<field name="name" filter_domain="[('name', 'ilike', self)]" />
+		            <separator/>
+		            <filter name="is_active_true"  string="启用" domain="[('is_active','=',True)]" /> 
+		            <filter name="is_active_false"  string="未启用" domain="[('is_active','=',False)]" />               	
+		           	<group expand="1" string="Group By">
+		           		<filter name="groupby_active"  string="状态" context="{'group_by':'is_active'}" />               	
+		           	</group>         	
+	            </search>
+	        </field>
+	    </record>
+	    
+	    <!-- 动作 anodoo.customer.application-->
+		<record id="action_anodoo_customer_application_list" model="ir.actions.act_window">
+	        <field name="name">客户应用</field>
+	        <field name="res_model">anodoo.customer.application</field>
+	        <field name="view_mode">tree,form</field>
+	        <field name="context">{}</field>
+	    </record>
+	    
+	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_anodoo_customer_application" name="客户应用" action="action_anodoo_customer_application_list"/>
+	    
+======================================
+webclient_templates.xml
+website_templates.xml
+t-call="web.layout"
+
+整体
+web.layout  t-name="web.layout">		<t name="Web layout" t-name="web.layout">
+	web.frontend_layout		<data name="Frontend Layout" inherit_id="web.layout" primary="True">
+	    portal.frontend_layout		<data name="Main Frontend Layout" inherit_id="web.frontend_layout">
+	    	website.layout
+	    	其他的包括:portal.portal_show_sign_in  portal.my_account_link, anodoo_profile.my_profile_link, anodoo_customer_application.multi_portal_link
+   	survey.layout
+======================================
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+看板参考 cust_views.xml anodoo.customer.kanban
+contact_views.xml anodoo.contact.kanban
+
+<kanban class="o_res_partner_kanban" archivable="false" create="false" edite="false" delete="false">
+  
+<page name='prospect' string="潜在客户" attrs="{'invisible': [('is_prospect', '=', False)]}">
+                            
+                        </page>
+  
+  顶部相关
+  <div class="oe_button_box" name="button_box"/>
+  
+  the image of the contact
+  <field name="image_1920" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image_128&quot;}"/>
+  				
+  				the alert message
+				<div class="alert alert-warning oe_edit_only" role="alert" attrs="{'invisible': [('same_vat_partner_id', '=', False)]}">
+                  A partner with the same <span><span class="o_vat_label">Tax ID</span></span> already exists (<field name="same_vat_partner_id"/>), are you sure to create a new one?
+                </div>
+                
+  <field name="active" invisible="1"/>
+<field name="company_type" widget="radio" class="oe_edit_only" options="{'horizontal': true}"/>              
+ <field name="name" default_focus="1" placeholder="Name" attrs="{'required' : [('type', '=', 'contact')]}"/>
+ 
+<field name="inherit_id" ref="crm.crm_lead_view_form"/> 
+ 
+ <filter string="已归档" name="inactive" domain="[('active', '=', False)]"/>
+ 
+ <xpath expr="//div[hasclass('oe_title')]" position="inside">
+                    <field name="product_template_attribute_value_ids" widget="many2many_tags" readonly="1"
+                        groups="product.group_product_variant"/>
+                </xpath>
+                
+                <xpath expr="//field[@name='stage_id']" position="attributes">
+	        		<attribute name="attrs">{'invisible': ['|', ('active', '=', False)]}</attribute>
+	        		<attribute name="domain">['|', ('team_id', '=', team_id), ('team_id', '=', False), ('lifetime_id','=',lifetime_id)]</attribute>
+	        	</xpath>
+  </data>
+</odoo>
+
+<xpath expr="//header" position="attributes">
+        <attribute name="t-attf-class" add="#{'o_no_autohide_menu'}" separator=" "/>
+    </xpath>
+
+
+加css
+        <template id="assets_frontend" inherit_id="web.assets_frontend" name="OAuth Providers Assets">
+            <xpath expr="//link[last()]" position="after">
+                <link rel="stylesheet" type="text/scss" href="/auth_oauth/static/src/scss/auth_oauth.scss"/>
+            </xpath>
+        </template>	    
+	    
+按钮
+	class="btn btn-secondary" 
+	    <button name="action_set_won_rainbowman" string="Mark Won" type="object" class="oe_highlight" attrs="{'invisible': ['|','|', ('active','=',False), ('probability', '=', 100), ('type', '=', 'lead')]}"/>
+                        <button name="221" string="Mark Lost" type="action" class="oe_highlight" context="{'default_lead_id': active_id}" attrs="{'invisible': ['|', ('type', '=', 'lead'),('active', '=', False),('probability', '&lt;', 100)]}"/>
+                        
+                    </header>
