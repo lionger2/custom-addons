@@ -1,12 +1,12 @@
-		replace model_id: slide.channel.category
-		replace: slide_channel_category
-		modify: 课程目录
+		replace model_id: anodoo.website.form
+		replace: anodoo_website_form
+		modify: 网站表单
 		
+		注意不要copy下一行的部分
+		access_anodoo_website_form_user,anodoo.website.form.user,model_anodoo_website_form,anodoo_base.group_anodoo_user,1,1,1,1
 		
-		access_slide_channel_category_user,slide.channel.category.user,model_slide_channel_category,anodoo_base.group_anodoo_user,1,1,1,1
-		
-		<!-- 课程目录 
-        <record id="slide_channel_category_1" model="slide.channel.category">
+		<!-- 网站表单 
+        <record id="anodoo_website_form_1" model="anodoo.website.form">
         	<field name="name">两年内无交易</field>
         	<field name="category_id" ref="anodoo_customer_label_category_2"/>
         	<field name="users" eval="[(4,ref('user_zhao_customer'))]"/>
@@ -14,13 +14,13 @@
         </record>
         -->
         
-		<!-- 课程目录 model_id: slide.channel.category-->
-	    <record id="view_slide_channel_category_form" model="ir.ui.view">
-	        <field name="name">slide.channel.category.view.form</field>
-	        <field name="model">slide.channel.category</field>
+		<!-- 网站表单 model_id: anodoo.website.form-->
+	    <record id="view_anodoo_website_form_form" model="ir.ui.view">
+	        <field name="name">anodoo.website.form.view.form</field>
+	        <field name="model">anodoo.website.form</field>
 	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
-	            <form string="slide_channel_category">
+	            <form string="anodoo_website_form">
 	                <sheet>
 		                <group name="group_top">
 			                 <group name="group_left">
@@ -49,9 +49,9 @@
 	            </form>            
 	        </field>
 	    </record>
-	    <record id="view_slide_channel_category_list" model="ir.ui.view">
-	        <field name="name">slide.channel.category.view.list</field>
-	        <field name="model">slide.channel.category</field>
+	    <record id="view_anodoo_website_form_list" model="ir.ui.view">
+	        <field name="name">anodoo.website.form.view.list</field>
+	        <field name="model">anodoo.website.form</field>
 	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
 	            <tree>
@@ -64,9 +64,9 @@
 	            </tree>
 	        </field>
 	    </record>
-	    <record id="view_slide_channel_category_search" model="ir.ui.view">
-	        <field name="name">slide.channel.category.view.search</field>
-	        <field name="model">slide.channel.category</field>
+	    <record id="view_anodoo_website_form_search" model="ir.ui.view">
+	        <field name="name">anodoo.website.form.view.search</field>
+	        <field name="model">anodoo.website.form</field>
 	        <field name="priority">100</field>
 	        <field name="arch" type="xml">
 	            <search>
@@ -81,15 +81,15 @@
 	        </field>
 	    </record>
 	    
-	    <!-- 动作 slide.channel.category-->
-		<record id="action_slide_channel_category_list" model="ir.actions.act_window">
-	        <field name="name">课程目录</field>
-	        <field name="res_model">slide.channel.category</field>
+	    <!-- 动作 anodoo.website.form-->
+		<record id="action_anodoo_website_form_list" model="ir.actions.act_window">
+	        <field name="name">网站表单</field>
+	        <field name="res_model">anodoo.website.form</field>
 	        <field name="view_mode">tree,form</field>
 	        <field name="context">{}</field>
 	    </record>
 	    
-	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_slide_channel_category" name="课程目录" action="action_slide_channel_category_list"/>
+	    <menuitem parent="cust_menu_config_segment" id="cust_menu_config_segment_anodoo_website_form" name="网站表单" action="action_anodoo_website_form_list"/>
 	    
 ======================================
 webclient_templates.xml
@@ -101,7 +101,7 @@ web.layout  t-name="web.layout">		<t name="Web layout" t-name="web.layout">
 	web.frontend_layout		<data name="Frontend Layout" inherit_id="web.layout" primary="True">
 	    portal.frontend_layout		<data name="Main Frontend Layout" inherit_id="web.frontend_layout">
 	    	website.layout
-	    	其他的包括:portal.portal_show_sign_in  portal.my_account_link, anodoo_profile.my_profile_link, slide_channel_category.multi_portal_link
+	    	其他的包括:portal.portal_show_sign_in  portal.my_account_link, anodoo_profile.my_profile_link, anodoo_website_form.multi_portal_link
    	survey.layout
 ======================================
 <?xml version="1.0" encoding="utf-8"?>
