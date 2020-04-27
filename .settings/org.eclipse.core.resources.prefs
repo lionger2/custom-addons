@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//backend_theme_v13/controllers/main.py=utf-8
+encoding//backend_theme_v13/models/res_company.py=utf-8
+encoding//backend_theme_v13/models/res_users.py=utf-8
 encoding//siwei_dev/__manifest__.py=utf-8
 encoding//siwei_dev/controllers/__init__.py=utf-8
 encoding//siwei_dev/controllers/dev_controllers.py=utf-8
