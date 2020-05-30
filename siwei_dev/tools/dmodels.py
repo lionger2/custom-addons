@@ -259,4 +259,29 @@ getattr(self, field)
 
 tags and [unslug(tag)[1] for tag in tags.split(',')] or []
     
-    
+            try:
+            except Exception:
+            print('ab')
+            return (None, None)
+        
+设置数据和读取
+generate_lead_from_alias = fields.Boolean('Manual Assignation of Emails', config_parameter='crm.generate_lead_from_alias')
+pls_threshold = int(self.env['ir.config_parameter'].sudo().get_param('crm.pls_rebuild_threshold'))
+
+self.env['ir.config_parameter'].sudo().set_param('crm.pls_rebuild_threshold', 0)
+
+next_type_ids = fields.Many2many(
+        'mail.activity.type', 'mail_activity_rel', 'activity_id', 'recommended_id',
+        domain="['|', ('res_model_id', '=', False), ('res_model_id', '=', res_model_id)]",
+        string='Recommended Next Activities')
+    previous_type_ids = fields.Many2many(
+        'mail.activity.type', 'mail_activity_rel', 'recommended_id', 'activity_id',
+        domain="['|', ('res_model_id', '=', False), ('res_model_id', '=', res_model_id)]",
+        string='Preceding Activities')
+相关关系的定义方式
+
+字段的states的使用方法
+name = fields.Char(string='Order Reference', required=True, copy=False, readonly=True, states={'draft': [('readonly', False)]}, index=True, default=lambda self: _('New'))
+
+self._install_module('payment_paypal')
+代码里安装模块

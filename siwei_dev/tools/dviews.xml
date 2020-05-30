@@ -175,6 +175,7 @@ contact_views.xml anodoo.contact.kanban
     </template>	            	
 	            	
 	            	
+attrs="{'required': [('force_next', '=', True)]}" 	        根据其他字段控制required属性     	
 	            	
-	            	
+	            	<field name="mode">primary</field>
 	            	
