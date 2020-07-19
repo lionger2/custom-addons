@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="layui_theme_odoo12_template" xml:space="preserve">
+
+    <t t-name="layui_pager">
+        <div t-attf-id="#{widget.id}.layui_pager" class="layui_pager"/>
+    </t>
+
+    <t t-name="layui_tree_button">
+        <t t-foreach="tree_buttons" t-as="button_info">
+            <button class="btn btn-primary" t-att-action="button_info.id">
+                <t t-esc="button_info.name"/>
+            </button>
+        </t>
+    </t>
+
+</templates>

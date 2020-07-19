@@ -1,0 +1,95 @@
+<odoo>
+    <data>
+        <template id="layui_theme_login_main_layout">
+            &lt;!DOCTYPE html&gt;
+            <html t-att="html_data or {}">
+                <head>
+                    <meta charset="utf-8"/>
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+                    <title t-esc="title or 'funenc admin'"/>
+                    <link type="image/x-icon" rel="shortcut icon"
+                          t-att-href="x_icon or '/web/static/src/img/favicon.ico'"/>
+                    <script type="text/javascript">
+                        var odoo = {
+                        csrf_token: "<t t-esc="request.csrf_token(None)"/>"
+                        };
+                    </script>
+                    <t t-raw="head or ''"/>
+                </head>
+                <body>
+                    <t style="height:100%;" t-value="{'style': 'height: 100%;'}" t-raw="0"/>
+                </body>
+                <script type="text/javascript" src="/layui_theme_odoo12/static/js/web_login.js"/>
+            </html>
+        </template>
+
+        <template id="layui_theme_login_layout">
+            <t t-call="layui_theme_odoo12.layui_theme_login_main_layout">
+                <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
+                <t t-set="head">
+                    <t t-call-assets="web.assets_common" t-js="false"/>
+                    <t t-call-assets="web.assets_frontend" t-js="false"/>
+                    <t t-call-assets="web.assets_common" t-css="false"/>
+                    <t t-call-assets="web.assets_frontend" t-css="false"/>
+
+                    <link rel="stylesheet" href="/layui_theme_odoo12/static/layui/css/layui.css"/>
+                    <link rel="stylesheet" href="/layui_theme_odoo12/static/css/admin.css"/>
+                    <link rel="stylesheet" href="/layui_theme_odoo12/static/css/style.css"/>
+
+                    <script src="/layui_theme_odoo12/static/layui/layui.js"/>
+                </t>
+                <t t-raw="0"/>
+            </t>
+        </template>
+        <!-- 登录页面 -->
+        <template id="funenc_layui_theme_login">
+            <t t-call="layui_theme_odoo12.layui_theme_login_layout">
+                <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="height:100%;">
+                    <div class="layadmin-user-login-main">
+                        <div class="layadmin-user-login-box layadmin-user-login-header">
+                            <h2>
+                                <t t-esc="title"/>
+                            </h2>
+                            <p>
+                                <t t-esc="english_title"/>
+                            </p>
+                        </div>
+                        <form action="" class="layadmin-user-login-box layadmin-user-login-body layui-form">
+                            <div class="layui-form-item">
+                                <label class="layadmin-user-login-icon layui-icon layui-icon-username"
+                                       for="uesr_login_name">
+                                </label>
+                                <input type="text" name="username" id="uesr_login_name" lay-verify="required"
+                                       placeholder="用户名" class="layui-input"/>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layadmin-user-login-icon layui-icon layui-icon-password"
+                                       for="uesr_login_password">
+                                </label>
+                                <input type="password" name="password" id="uesr_login_password" lay-verify="required"
+                                       placeholder="密码" class="layui-input"/>
+                            </div>
+                            <div class="layui-form-item" style="text-align: center;">
+                                <button class="layui-btn layui-btn-fluid" lay-submit="true"
+                                        style="width:335px;width: 100%;"
+                                        id="LAY-user-login-submit"
+                                        lay-filter="LAY-user-login-submit">
+                                    登入
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="layui-trans layadmin-user-login-footer">
+                    <p>
+                        © 2018
+                        <a href="http://www.funenc.com/" target="_blank">
+                            funenc.com
+                        </a>
+                    </p>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

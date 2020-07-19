@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="funenc_layui_theme_assets" name="funenc_layui_theme_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/layui_theme_odoo12/static/css/admin.css"/>
+                <link rel="stylesheet" href="/layui_theme_odoo12/static/css/style.css"/>
+                <script src="/layui_theme_odoo12/static/funenc_layui_theme.js"/>
+                <script src="/layui_theme_odoo12/static/js/layui_theme_web_client.js"/>
+                <script src="/layui_theme_odoo12/static/js/layui_theme_menu.js"/>
+                <script src="/layui_theme_odoo12/static/js/layui_pager.js"/>
+                <script src="/layui_theme_odoo12/static/js/list/layui_theme_list_renderer.js"/>
+                <script src="/layui_theme_odoo12/static/js/list/layui_theme_list_controller.js"/>
+                <script src="/layui_theme_odoo12/static/js/layui_theme_action_manager.js"/>
+                <script src="/layui_theme_odoo12/static/js/layui_theme_abstract_controller.js"/>
+                <script src="/layui_theme_odoo12/static/js/search_extend/layui_theme_search_extend.js"/>
+                <script src="/layui_theme_odoo12/static/js/search_extend/layui_theme_search_panel.js"/>
+                <script src="/layui_theme_odoo12/static/js/search_extend/layui_theme_search_proposition.js"/>
+            </xpath>
+        </template>
+
+
+        <template id="funenc_layui_theme_layout" name="funenc_layui_theme_layout" inherit_id="web.layout">
+            <xpath expr="//t[@t-raw]" position="before">
+                <link rel="stylesheet" href="/layui_theme_odoo12/static/layui/css/layui.css"/>
+                <link rel="stylesheet" href="/layui_theme_odoo12/static/layui_admin/style/login.css"/>
+                <link rel="stylesheet" href="/layui_theme_odoo12/static/layui_admin/style/admin.css"/>
+                <script src="/layui_theme_odoo12/static/layui/layui.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

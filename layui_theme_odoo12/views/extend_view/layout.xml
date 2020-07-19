@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="layui_web_layout" name="layui_web_layout" inherit_id="web.webclient_bootstrap">
+            <xpath expr="//div[@class='o_main']" position="replace">
+                <div style="display:none">
+                </div>
+            </xpath>
+
+            <xpath expr="//t[@t-set='body_classname']" position="replace">
+                <t t-set="body_classname" t-value="'layui-layout-body'"/>
+                <body layadmin-themealias="default">
+                    <div id="LAY_app" class="layadmin-tabspage-none">
+                        <div class="layui-layout layui-layout-admin">
+                            <!--header-->
+                            <t t-call="layui_theme_odoo12.funenc_layui_header"/>
+                            <!--左侧导航栏区域-->
+                            <t t-call="layui_theme_odoo12.funenc_layui_side"/>
+                            <!--body区域-->
+                            <div class="layui-body" id="LAY_app_body">
+                                <div class="o_main">
+                                    <main class="o_main_content"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+            </xpath>
+        </template>
+
+        <template id="funenc_layui_header">
+            <div class="layui-header">
+                <!--收缩按钮-->
+                <ul class="layui-nav layui-layout-left">
+                    <li class="layui-nav-item layadmin-flexible" lay-unselect="">
+                        <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                            <i class="layui-icon" id="LAY_app_flexible"/>
+                        </a>
+                    </li>
+                </ul>
+                <!--右侧头像区域-->
+                <ul class="layui-layout-right" lay-filter="layadmin-layout-right">
+                </ul>
+            </div>
+        </template>
+
+        <template id="funenc_layui_side">
+            <div class="layui-side layui-side-menu">
+                <!--左侧导航栏区域-->
+                <div class="layui-side-scroll" id="LAY_app_side">
+                    <div class="layui-logo">
+                        <span><img t-attf-src="/layui_theme_odoo12/logo" t-attf-class="logo" /></span>
+                        <!--<img t-attf-src="/layui_theme_odoo12/logo_mini" t-attf-class="logo_mini" />-->
+                    </div>
+                    <ul class="layui-nav layui-nav-tree"
+                        lay-filter="layadmin-system-side-menu" id="LAY-system-side-menu">
+                        <t t-call="layui_theme_odoo12.layui_theme_menu_side"/>
+                    </ul>
+                </div>
+            </div>
+        </template>
+
+        <template id="layui_theme_menu_side">
+            <t t-foreach="menu_data['children']" t-as="menu">
+                <!--没有子菜单时-->
+                <t t-if="not menu['children']">
+                    <li t-att="{'data-name': menu['name']}" class="layui-nav-item">
+                        <a href="javascript:void 0"
+                           t-att="{'lay-tips': menu['name'], 'menu_id': menu['id'], 'action': menu['action'].split(',')[1] or ''}"
+                           t-att-data-action-model="menu['action'] and menu['action'].split(',')[0] or ''"
+                           lay-direction="2">
+                            <t t-if="menu['icon']">
+                                <t t-set="icon" t-value="menu['icon']">
+                                </t>
+                                <i class="layui-icon">
+                                    <t t-esc="icon"/>
+                                </i>
+                            </t>
+                            <cite>
+                                <t t-esc="menu['name']"/>
+                            </cite>
+                        </a>
+                    </li>
+                </t>
+                <!--若有子菜单时-->
+                <t t-if="menu['children']">
+                    <li data-name="data-name" class="layui-nav-item">
+                        <a href="javascript:void 0" t-att="{'lay-tips': menu['name']}" lay-direction="2">
+                            <t t-if="menu['icon']">
+                                <t t-set="icon" t-value="menu['icon']">
+                                </t>
+                                <i class="layui-icon">
+                                    <t t-esc="icon"/>
+                                </i>
+                            </t>
+                            <t t-elif="menu['name'] == '应用'">
+                                <i class="layui-icon">&#xe653;</i>
+                            </t>
+                            <t t-elif="menu['name'] == '设置'">
+                                <i class="layui-icon">&#xe716;</i>
+                            </t>
+                            <t t-else="">
+                                <i class="layui-icon layui-icon-home">
+                                </i>
+                            </t>
+                            <cite>
+                                <t t-esc="menu['name']"/>
+                            </cite>
+                        </a>
+                        <t t-call="layui_theme_odoo12.layui_theme_children_menu_link"/>
+                    </li>
+                </t>
+            </t>
+        </template>
+
+        <!--若有子菜单时的子节点-->
+        <template id="layui_theme_children_menu_link">
+            <dl class="layui-nav-child">
+                <t t-foreach="menu['children']" t-as="menu">
+                    <!--没有下一级子节点-->
+                    <t t-if="not menu['children']">
+                        <dd t-att="{'data-name': menu['name']}">
+                            <a href="javascript:void 0"
+                               t-att="{'menu_id': menu['id'], 'action': menu['action'].split(',')[1]  or ''}"
+                               t-att-data-action-model="menu['action'] and menu['action'].split(',')[0] or ''">
+                                <t t-esc="menu['name']"/>
+                            </a>
+                        </dd>
+                    </t>
+                    <!--有下一级子节点-->
+                    <t t-if="menu['children']">
+                        <dd t-att="{'data-name': menu['name']}">
+                            <a href="javascript:void 0">
+                                <t t-esc="menu['name']"/>
+                                <span class="layui-nav-more"/>
+                            </a>
+                            <t t-call="layui_theme_odoo12.layui_theme_children_menu_link"/>
+                        </dd>
+                    </t>
+                </t>
+            </dl>
+        </template>
+    </data>
+</odoo>
